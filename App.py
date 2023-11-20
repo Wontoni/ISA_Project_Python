@@ -17,8 +17,9 @@ def index():
 def translate():
     article_en = request.form['original_text']
     translate_code = request.form['translate_code']
-    tokenizer = AutoTokenizer.from_pretrained("SnypzZz/Llama2-13b-Language-translate", token=app.config["HUGGINGFACE_TOKEN"])
-    model = AutoModelForSeq2SeqLM.from_pretrained("SnypzZz/Llama2-13b-Language-translate", token=app.config["HUGGINGFACE_TOKEN"])
+    access_token = app.config["HUGGINGFACE_TOKEN"]
+    tokenizer = AutoTokenizer.from_pretrained("SnypzZz/Llama2-13b-Language-translate", token=access_token)
+    model = AutoModelForSeq2SeqLM.from_pretrained("SnypzZz/Llama2-13b-Language-translate", token=access_token)
 
     model_inputs = tokenizer(article_en, return_tensors="pt")
 
