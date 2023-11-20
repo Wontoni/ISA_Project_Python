@@ -14,6 +14,7 @@ def index():
 
 @app.post('/translate')
 def translate():
+    print(app.config["HUGGINGFACE_TOKEN"])
     article_en = request.form['original_text']
     translate_code = request.form['translate_code']
     tokenizer = AutoTokenizer.from_pretrained("SnypzZz/Llama2-13b-Language-translate", token=app.config["HUGGINGFACE_TOKEN"])
